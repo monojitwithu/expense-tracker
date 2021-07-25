@@ -1,0 +1,32 @@
+.mainBlock{
+
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: burlywood;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    margin: 100px auto;
+    display: table;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    .underLine{
+        text-align: center;
+        margin: 7px 0 0;
+        display: block;
+        button{
+            border: 0;
+            background-color: unset;
+            text-decoration: underline;
+            color:#3c4043 ;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+
+        
+
+        }
+    }
+
+}
