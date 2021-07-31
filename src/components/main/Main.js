@@ -1,21 +1,42 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Register from '../forms/register/Register'
 import Login from "../forms/login/Login"
+import fire from "../../config/Fire"
+import Tracker from "../tracker/Tracker"
 
 
 const Main=()=>{
     const [form,setForm]=useState(false)
+    const [userdata,setUserData]=useState({
+        user:1,
+        loading:true
+    })
 
 
-  const fromSwitcher=(action)=>[
+  const fromSwitcher=()=>{
       form?setForm(false):setForm(true)
+    }
+    
+    useEffect(()=>{
+        authListner()
 
+    },[])
 
+    const authListner=()=>{
+        fire.auth().onAuthStateChanged((user)=>{
+            if(user){
+                setUserData({...userdata,user:user})
 
-  ]  
+            }else{
+                setUserData({...userdata,user:null})
+            }
+        })
+    } 
 
     return(
-        <div className="mainBlock"> 
+        <>
+        {!userdata.user?
+        (<div className="mainBlock"> 
         {form? <Register/> : <Login/>}
 
         
@@ -26,8 +47,10 @@ const Main=()=>{
             
         
         
-        </div>
+        </div>):(<Tracker/>)}
+        </>
     )
-}
+        }
+
 
 export default Main;
