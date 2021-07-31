@@ -21,7 +21,7 @@ const Register=()=>{
         .then((user)=>{
         var currentUser=fire.auth().currentUser
         currentUser.updateProfile({
-            name:userData.name
+            displayName:userData.name
         })})
         .catch((error)=> setUserData({...userData,fireErrors:error.message}))
 

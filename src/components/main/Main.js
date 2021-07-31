@@ -3,6 +3,7 @@ import Register from '../forms/register/Register'
 import Login from "../forms/login/Login"
 import fire from "../../config/Fire"
 import Tracker from "../tracker/Tracker"
+import Spinner from './spinner.gif'
 
 
 const Main=()=>{
@@ -16,7 +17,7 @@ const Main=()=>{
   const fromSwitcher=()=>{
       form?setForm(false):setForm(true)
     }
-    
+
     useEffect(()=>{
         authListner()
 
@@ -32,6 +33,14 @@ const Main=()=>{
             }
         })
     } 
+    if(userdata.user===1){
+        return<div className="mainBlock">
+            <div className="spinner">
+                <img src={Spinner} alt="spinner" className="imgSpinner"/>
+            </div>
+        </div>
+
+    }
 
     return(
         <>
