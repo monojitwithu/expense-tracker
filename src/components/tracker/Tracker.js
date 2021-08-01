@@ -27,6 +27,52 @@ const Tracker=()=>{
         setUserTransaction({...userTransaction,[e.target.name]:e.target.value})
     }
     
+    const addnewTransaction=(e)=>{
+        
+        e.preventDefault()
+        const{transaction,money,transactionName,price,currentUID,transactionType}=userTransaction;
+        
+        if(transactionName && transactionType && price && transaction ){
+            const backupState=userTransaction.transaction
+            console.log("working")
+          
+            
+           
+            backupState.push({
+                id:backupState.length+1,
+                name: transactionName,
+                type: transactionType,
+                price:price,
+                user_id: currentUID
+            })
+            fire.database().ref('Transaction/' + currentUID).push({
+                id:backupState.length,
+                name:transactionName,
+                type:transactionType,
+                price:price,
+                user_id:currentUID
+
+            }).then((data)=>{
+                console.log("success")
+                setUserTransaction({
+                    transaction:backupState,
+                    money:transactionType==="deposit"?money+parseFloat(price):money-parseFloat(price),
+                    transactionName:"",
+                    transactionType: '',
+                    price:"",
+                    currentUID:fire.auth().currentUser.uid
+
+                })
+                
+            }).catch((err)=>console.log(err.message))
+
+
+        }
+
+        
+
+    }
+    
 
     return (
         <>
@@ -51,7 +97,7 @@ const Tracker=()=>{
 
                     </div>
                     
-                    <button className="addTransaction">+ Add Transaction</button>
+                    <button className="addTransaction" onClick={addnewTransaction}>+ Add Transaction</button>
 
 
                 </form>

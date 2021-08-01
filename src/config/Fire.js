@@ -3,13 +3,13 @@ import  firebase from "firebase"
 
 const config={
 
-    apiKey: "AIzaSyAIAMsovG8isd0hVGW2MQhUVhXGYjSRFbk",
-    authDomain: "expense-tracker-007.firebaseapp.com",
-    projectId: "expense-tracker-007",
-    storageBucket: "expense-tracker-007.appspot.com",
-    messagingSenderId: "819677232440",
-    appId: "1:819677232440:web:a15e72a66918579dd895cd",
-    measurementId: "G-Z018K47CQG"
+    apiKey: "AIzaSyB_k25ibK_kgUoU0ZYcdWXMvrK1i0lhNXA",
+    authDomain: "expense-tracker-00.firebaseapp.com",
+    projectId: "expense-tracker-00",
+    storageBucket: "expense-tracker-00.appspot.com",
+    messagingSenderId: "617782212146",
+    appId: "1:617782212146:web:8cce5b63f3f1eff8d26e2b",
+    measurementId: "G-S4X97GN5Z0"
 }
 const fire=firebase.initializeApp(config)
 
