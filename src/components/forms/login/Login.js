@@ -26,7 +26,8 @@ console.log(userDetail.fireErrors)
 
     return(
         <>
-        {userDetail.fireErrors&& <div>{userDetail.fireErrors}</div>}
+        <h1>Expense Tracker</h1>
+        {userDetail.fireErrors&& <div style={{color:"red"}}>{userDetail.fireErrors}</div>}
         <form>
             <input type="text" className="regField"  placeholder="email" name="email" onChange={inputHandler} value={userDetail.email}/>
             <input type="password" className="regField"  placeholder="Password" name="password" onChange={inputHandler} value={userDetail.password}/>

@@ -4,7 +4,8 @@
     /* background-color: #E9E9E9; */
     padding: 20px;
     width: 100%;
-    max-width: 350px;
+    max-height: 600px;
+    max-width: 500px;
     margin: 100px auto;
     display: table;
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
@@ -12,6 +13,7 @@
 
 .welcome {
     color: #fff;
+    font-size: 20px;
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -19,7 +21,7 @@
 }
 .totalMoney {
     color: #fff;
-    font-size: 20px;
+    
     margin:0 0 10px;
     text-shadow: 0px 5px 3px #292929;
 }
@@ -31,7 +33,7 @@
     display: table;
     width: 100%;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #E73571;
     border: 0;
     padding: 10px;
     margin:0 0 10px;
@@ -41,11 +43,13 @@
 
 .newTransaction input[type="text"],
 .newTransaction select{
-    width: 100%;
+    width: 99%;
     box-sizing: border-box;
     border: 1px solid #ddd;
     font-size: 13px;
-    padding: 7px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 .newTransaction input[type="text"]:focus,
@@ -60,7 +64,7 @@
 
 .addTransaction {
     text-align: center;
-    color: #ffffff;
+    color:whitesmoke;
     border-radius: 3px;
     background-color: #425f9c;
     border: 0;
@@ -82,7 +86,7 @@
 
 .latestTransactions {
     margin: 10px 0 0 0;
-    background-color: #fff;
+    background-color: #F476A3;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -115,7 +119,7 @@ ul li:last-child{
 }
 
 .expense {
-    color: red;
+    color: black;
 }
 
 .deposit {

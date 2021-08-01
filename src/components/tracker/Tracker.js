@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import fire from "../../config/Fire"
+import Transaction from "../transaction/Transaction"
 
 
 const Tracker=()=>{
@@ -56,7 +57,7 @@ const Tracker=()=>{
                 console.log("success")
                 setUserTransaction({
                     transaction:backupState,
-                    money:transactionType==="deposit"?money+parseFloat(price):money-parseFloat(price),
+                    money:money+parseFloat(price),
                     transactionName:"",
                     transactionType: '',
                     price:"",
@@ -72,6 +73,36 @@ const Tracker=()=>{
         
 
     }
+    useEffect(()=>{
+        getData()
+        
+
+    },[])
+
+    const getData=()=>{
+        const {currentUID,money}=userTransaction;
+        let totalMoney=money;
+        const backupState=userTransaction.transaction
+        fire.database().ref('Transaction/'+ currentUID).once('value',(snapshot)=>{
+            snapshot.forEach((childSnapshot)=>{
+                totalMoney+= parseFloat( childSnapshot.val().price)
+                backupState.push({
+                    id:childSnapshot.val().id,
+                    name:childSnapshot.val().name,
+                    type:childSnapshot.val().type,
+                    price:childSnapshot.val().price,
+                    user_id:childSnapshot.val().user_id
+                })
+
+            })
+            setUserTransaction({...userTransaction,transaction:backupState,money:totalMoney})
+            
+            
+
+        })
+
+    }
+    
     
 
     return (
@@ -82,18 +113,18 @@ const Tracker=()=>{
                 <span>Hi, {user.displayName}</span>
                 <button onClick={logout} className="exit">Log Out</button>
             </div>
-            <div className="totalMoney">$145</div>
+            <div className="totalMoney"> Total  Money Spent ₹{userTransaction.money}</div>
             <div className="newTransactionBlock">
                 <div className="newTransaction">
-                <form>
+                <form style={{overflow:"hidden"}}>
                     <input placeholder="Transaction Name"type="text" name="transactionName" onChange={inputHandler} value={userTransaction.transactionName}/>
                     <div className="inputGroup">
                         <select name="transactionType" onChange={inputHandler} value={userTransaction.transactionType}>
-                            
+                            <option value="0">Type</option>
                             <option value="expense">Expense</option>
-                            <option value="deposit">Deposit</option>
+                            {/* <option value="deposit">Deposit</option> */}
                         </select>
-                        <input placeholder="Price" type="text" name="price" onChange={inputHandler} value={userTransaction.price}/>
+                        <input placeholder="Price" type="number" name="price" onChange={inputHandler} value={userTransaction.price} style={{ border:"1px solid #ddd",outline:"none" , height: "34px",marginTop: "5px"}}/>
 
                     </div>
                     
@@ -105,13 +136,13 @@ const Tracker=()=>{
 
 
             </div>
-            <div className="latestTransactions">
+            <div className="latestTransactions" style={{maxHeight:"300px",overflow:"auto"}}>
             <p>Latest Transaction</p>
             <ul>
-                <li>
-                    <div>ATM Deposit</div>
-                    <div>+ $5</div>
-                </li>
+                {userTransaction.transaction.map(({price,name,type,id})=>
+                <Transaction price={price} name={name} type={type}  key={id}/>
+                )}
+                
             </ul>
             </div>
 

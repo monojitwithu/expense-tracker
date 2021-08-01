@@ -44,6 +44,9 @@ const Main=()=>{
 
     return(
         <>
+        
+        
+        
         {!userdata.user?
         (<div className="mainBlock"> 
         {form? <Register/> : <Login/>}

@@ -32,7 +32,8 @@ const Register=()=>{
     return(
         
         <>
-        {userData.fireErrors && <div className="Error">{userData.fireErrors}</div>}
+        <h1>Expense Tracker</h1>
+        {userData.fireErrors && <div className="Error" style={{color:"red"}}>{userData.fireErrors}</div>}
         
         <form>
             <input type="text" className="regField"  placeholder="Your Name" name="name" onChange={inputHandler} value={userData.name}/>
