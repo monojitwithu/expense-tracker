@@ -113,7 +113,7 @@ const Tracker=()=>{
                 <span>Hi, {user.displayName}</span>
                 <button onClick={logout} className="exit">Log Out</button>
             </div>
-            <div className="totalMoney"> Total  Money Spent ₹{userTransaction.money}</div>
+            <div className="totalMoney" style={{fontSize:"25px"}}> Total  Money Spent <span style={{color:"red",textShadow: "none",fontWeight:"800"} }  > ₹{userTransaction.money}</span></div>
             <div className="newTransactionBlock">
                 <div className="newTransaction">
                 <form style={{overflow:"hidden"}}>
