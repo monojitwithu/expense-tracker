@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, {useEffect,useState} from "react"
 import fire from "../../config/Fire"
 import Transaction from "../transaction/Transaction"
 
@@ -41,8 +41,8 @@ const Tracker=()=>{
            
             backupState.push({
                 id:backupState.length+1,
-                name: transactionName,
-                type: transactionType,
+                name:             transactionName,
+                type:                transactionType,
                 price:price,
                 user_id: currentUID
             })
