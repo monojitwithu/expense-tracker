@@ -4,7 +4,7 @@ import Transaction from "../transaction/Transaction"
 
 
 const Tracker=()=>{
-    const [userTransaction,setUserTransaction]=useState({
+    const [userTransaction                                 ,setUserTransaction]=useState({
         transaction:[],
         money:0,
         transactionName:"",
